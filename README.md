@@ -25,17 +25,20 @@ optimization2 大幅提高性能到 30ms
 * SIMD向量化运算 利用128位寄存器进行运算           
 optimization3 提高性能到 27ms
 
-### 并行化运算 在optimization3的基础上利用多核特性 4 core
+### 在optimization3的基础上利用多核特性 4 core
 optimization4 提高性能到 7ms, 相对于最初提高了将近22倍
 
-### 在optimization3 基础上 沿着reduction 维度展开并使用AVX512 指令
+### 在optimization3 基础上 沿着reduction 维度展开并使用AVX2 指令
 * 利用256位寄存器进行运算   AVX2 on my I7 CPU, 16 YMM register
+optimization5 提高从optimization3的27ms 性能到 10 ms
+进一步多核（4）并行化可以到 2ms
+
+### 利用AVX512 优化
 
 
 ## 下一步
-* 256位进一步向量化 对 矩阵内存排布的要求
-* 并行化的粒度选择
-
+256位进一步向量化 对 矩阵内存排布的要求
+并行化的粒度选择
 
 ## Check Memory Leak
 ```

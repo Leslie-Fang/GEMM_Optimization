@@ -4,12 +4,13 @@
 #include "optimization2.h"
 #include "optimization3.h"
 #include "optimization4.h"
+#include "optimization5.h"
 #include "helper.h"
 using namespace std;
 
 int main(int argc, char ** argv){
-	shared_ptr<float[]> lhs = matrix_generate_2D();
-	shared_ptr<float[]> rhs = matrix_generate_2D();
+	shared_ptr<float[]> lhs = matrix_lhs_generate_2D();
+	shared_ptr<float[]> rhs = matrix_rhs_generate_2D();
 
 	// shared_ptr<float[]> lhs(new float[4]{1,2,3,4});
 	// shared_ptr<float[]> rhs(new float[4]{1,2,3,4});
@@ -29,10 +30,13 @@ int main(int argc, char ** argv){
 	shared_ptr<float[]> res4(new float[M*N]{0});
 	optimization4(lhs, rhs, res4);
 
+	shared_ptr<float[]> res5(new float[M*N]{0});
+	optimization5(lhs, rhs, res5);
+
 	for(int i=0;i<M;i++){
 	    for(int j=0;j<N;j++){
-	    	if(res[i*N+j] - res4[i*N+j] > eps ){
-	    		cout<<"Mismatch value: "<<res[i*N+j] - res4[i*N+j]<<endl;
+	    	if(res[i*N+j] - res5[i*N+j] > eps ){
+	    		cout<<"Mismatch value: "<<res[i*N+j] - res5[i*N+j]<<endl;
 	    	}
 	    }
 	}

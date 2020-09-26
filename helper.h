@@ -8,6 +8,9 @@
 
 #define eps 1.0e-5
 
-std::shared_ptr<float[]> matrix_generate_2D(bool RowMajor=true);
+std::shared_ptr<float[]> matrix_lhs_generate_2D(bool RowMajor=true);
+std::shared_ptr<float[]> matrix_rhs_generate_2D(bool RowMajor=true);
+std::shared_ptr<float[]> rhs_memory_layout_reorder_to_ColMajor(std::shared_ptr<float[]> input);
+std::shared_ptr<float[]> rhs_memory_layout_reorder_to_RowMajor(std::shared_ptr<float[]> input);
 
 #endif
