@@ -44,7 +44,6 @@ shared_ptr<float[]> rhs_memory_layout_reorder_to_RowMajor(shared_ptr<float[]> in
     shared_ptr<float[]> a(new float[K*N]);
     for(int i=0;i<K;i++){
 		for(int j=0;j<N;j++){
-			//*(a.get()+i+j*K)= *(input.get()+i*N+j);
 			*(a.get()+i*N+j)= *(input.get()+i+j*K);
 		}
 	}

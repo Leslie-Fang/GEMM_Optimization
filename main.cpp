@@ -5,6 +5,9 @@
 #include "optimization3.h"
 #include "optimization4.h"
 #include "optimization5.h"
+#include "optimization6.h"
+#include "optimization7.h"
+#include "optimization8.h"
 #include "helper.h"
 using namespace std;
 
@@ -33,10 +36,28 @@ int main(int argc, char ** argv){
 	shared_ptr<float[]> res5(new float[M*N]{0});
 	optimization5(lhs, rhs, res5);
 
+	shared_ptr<float[]> res6(new float[M*N]{0});
+	optimization6(lhs, rhs, res6);
+
+	shared_ptr<float[]> res7(new float[M*N]{0});
+    optimization7(lhs, rhs, res7);
+
+	shared_ptr<float[]> res8(new float[M*N]{0});
+    optimization8(lhs, rhs, res8);
+
+    bool profilling = false;
+	if(profilling){
+        for(int i=0;i<20;i++){
+            optimization7(lhs, rhs, res7);
+        }
+	}
+
+    shared_ptr<float[]> base = res7;
+    shared_ptr<float[]> compare = res8;
 	for(int i=0;i<M;i++){
 	    for(int j=0;j<N;j++){
-	    	if(res[i*N+j] - res5[i*N+j] > eps ){
-	    		cout<<"Mismatch value: "<<res[i*N+j] - res5[i*N+j]<<endl;
+	    	if(base[i*N+j] - compare[i*N+j] > eps ){
+	    		cout<<"Mismatch value: "<<base[i*N+j] - compare[i*N+j]<<endl;
 	    	}
 	    }
 	}

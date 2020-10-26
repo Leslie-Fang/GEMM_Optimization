@@ -83,7 +83,7 @@ void optimization2(shared_ptr<float[]> lhs, shared_ptr<float[]> rhs, shared_ptr<
     
     gettimeofday(&end,NULL);
 
-    cout<<"Running: "<< (end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000) << "ms"<<endl;
+    cout<<"optimization2 Running: "<< (end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000) << "ms"<<endl;
 
 	if(verbose){
 		for(int i=0;i<M;i++){

@@ -9,7 +9,6 @@
 
 using namespace std;
 
-//rhs is ColMajor
 void optimization5(shared_ptr<float[]> lhs, shared_ptr<float[]> rhs, shared_ptr<float[]> res, bool verbose){
 	struct timeval start;
 	struct timeval end;
@@ -19,7 +18,7 @@ void optimization5(shared_ptr<float[]> lhs, shared_ptr<float[]> rhs, shared_ptr<
     __m256 t0, t1;
     __m256 res0[8];
     
-    #pragma omp parallel for num_threads(4) private(t0) private(t1) firstprivate(res0)
+    #pragma omp parallel for num_threads(4) private(t0) private(t1) private(res0)
     for(int i=0;i<M;i+=8){
         //这里i+8的8，表示这个loop一次算输出矩阵的8行，和这里我们用了res0[8] 的8个寄存器对应
     	for(int j=0;j<N;j+=8){
@@ -72,7 +71,7 @@ void optimization5(shared_ptr<float[]> lhs, shared_ptr<float[]> rhs, shared_ptr<
 
     gettimeofday(&end,NULL);
 
-    cout<<"Running: "<< (end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000) << "ms"<<endl;
+    cout<<"optimization5 Running: "<< (end.tv_sec * 1000 + end.tv_usec / 1000) - (start.tv_sec * 1000 + start.tv_usec / 1000) << "ms"<<endl;
 
 	if(verbose){
 		for(int i=0;i<M;i++){
